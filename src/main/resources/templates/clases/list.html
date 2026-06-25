@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Clases')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header}"></header>
+    <nav th:replace="~{fragments/layout :: navbar}"></nav>
+
+    <main class="container">
+        <h2>Clases / Servicios de Entrenamiento</h2>
+        <p><a th:href="@{/clases/nueva}" class="btn btn-primary">+ Nueva clase</a></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="clase : ${clases}">
+                    <td th:text="${clase.id}"></td>
+                    <td th:text="${clase.nombre}"></td>
+                    <td th:text="${clase.categoria.nombre}"></td>
+                    <td th:text="${clase.precio}"></td>
+                    <td>
+                        <a th:href="@{/clases/editar/{id}(id=${clase.id})}" class="btn btn-secondary">Editar</a>
+                        <a th:href="@{/clases/eliminar/{id}(id=${clase.id})}" class="btn btn-danger"
+                           onclick="return confirm('¿Eliminar esta clase?');">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

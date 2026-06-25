@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Reserva')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header}"></header>
+    <nav th:replace="~{fragments/layout :: navbar}"></nav>
+
+    <main class="container">
+        <h2 th:text="${reserva.id} == null ? 'Nueva reserva' : 'Editar reserva'"></h2>
+
+        <form th:action="@{/reservas/guardar}" th:object="${reserva}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div class="campo">
+                <label for="nombreCliente">Nombre del cliente</label>
+                <input type="text" id="nombreCliente" th:field="*{nombreCliente}">
+                <span class="error" th:if="${#fields.hasErrors('nombreCliente')}" th:errors="*{nombreCliente}"></span>
+            </div>
+            <div class="campo">
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha" th:field="*{fecha}">
+                <span class="error" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></span>
+            </div>
+            <div class="campo">
+                <label for="servicio">Clase / Servicio</label>
+                <select id="servicio" th:field="*{servicio}">
+                    <option value="">-- Seleccione --</option>
+                    <option th:each="serv : ${servicios}" th:value="${serv.id}" th:text="${serv.nombre}"></option>
+                </select>
+                <span class="error" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a th:href="@{/reservas}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Inicio')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header}"></header>
+    <nav th:replace="~{fragments/layout :: navbar}"></nav>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Bienvenido a FitZone Gym</h2>
+            <p>Somos un centro fitness dedicado a ayudarte a alcanzar tus metas. Contamos con entrenadores
+               certificados, equipos de ultima generacion y clases para todos los niveles: desde principiantes
+               hasta atletas avanzados.</p>
+        </section>
+
+        <section class="promo">
+            <h3>Nueva clase: Funcional HIIT</h3>
+            <p>Este mes lanzamos <strong>Funcional HIIT</strong>, una clase de alta intensidad que combina
+               ejercicios funcionales con intervalos cortos para maximizar la quema de calorias en 45 minutos.
+               Cupos limitados, reserva la tuya en la seccion de Clases.</p>
+        </section>
+
+        <section class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/UBMk30rjy0o" title="Entrenamiento funcional"
+                    allowfullscreen></iframe>
+        </section>
+
+        <section>
+            <h3>Nuestras clases destacadas</h3>
+            <div class="precios-grid">
+                <div class="precio-card" th:each="servicio : ${destacados}">
+                    <h4 th:text="${servicio.nombre}"></h4>
+                    <p class="precio-categoria" th:text="${servicio.categoria.nombre}"></p>
+                    <p class="precio-monto">&#8353;<span th:text="${servicio.precio}"></span></p>
+                    <a th:href="@{/reservas/nueva}" class="btn btn-primary">Reservar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

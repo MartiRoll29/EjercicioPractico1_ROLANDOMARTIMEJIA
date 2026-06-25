@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Reservas')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header}"></header>
+    <nav th:replace="~{fragments/layout :: navbar}"></nav>
+
+    <main class="container">
+        <h2>Reservas de Clases</h2>
+        <p><a th:href="@{/reservas/nueva}" class="btn btn-primary">+ Nueva reserva</a></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Clase / Servicio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="reserva : ${reservas}">
+                    <td th:text="${reserva.id}"></td>
+                    <td th:text="${reserva.nombreCliente}"></td>
+                    <td th:text="${reserva.fecha}"></td>
+                    <td th:text="${reserva.servicio.nombre}"></td>
+                    <td>
+                        <a th:href="@{/reservas/editar/{id}(id=${reserva.id})}" class="btn btn-secondary">Editar</a>
+                        <a th:href="@{/reservas/eliminar/{id}(id=${reserva.id})}" class="btn btn-danger"
+                           onclick="return confirm('¿Eliminar esta reserva?');">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(titulo)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo} + ' - Gimnasio FitZone'">Gimnasio FitZone</title>
+    <style>
+        :root { --primario: #1f2937; --acento: #f97316; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f3f4f6; color: #1f2937; }
+        header.site-header { background: var(--primario); color: #fff; padding: 1.2rem 2rem; }
+        header.site-header h1 { margin: 0; font-size: 1.6rem; }
+        header.site-header span { color: var(--acento); }
+        nav.navbar { background: #111827; padding: 0.8rem 2rem; }
+        nav.navbar a { color: #f9fafb; text-decoration: none; margin-right: 1.5rem; font-weight: 500; }
+        nav.navbar a:hover { color: var(--acento); }
+        main.container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; min-height: 60vh; }
+        footer.site-footer { background: var(--primario); color: #d1d5db; text-align: center; padding: 1.2rem; margin-top: 2rem; }
+        table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        table th, table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
+        table th { background: var(--primario); color: #fff; }
+        .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: 600; cursor: pointer; border: none; }
+        .btn-primary { background: var(--acento); color: #fff; }
+        .btn-danger { background: #dc2626; color: #fff; }
+        .btn-secondary { background: #6b7280; color: #fff; }
+        form .campo { margin-bottom: 1rem; }
+        form label { display: block; margin-bottom: 0.3rem; font-weight: 600; }
+        form input, form textarea, form select { width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 4px; }
+        .error { color: #dc2626; font-size: 0.85rem; }
+        .hero { background: linear-gradient(135deg, var(--primario), #374151); color: #fff; padding: 3rem 2rem; border-radius: 8px; margin-bottom: 2rem; }
+        .hero h2 { margin-top: 0; }
+        .promo { background: #fff; border-left: 5px solid var(--acento); padding: 1.5rem; border-radius: 6px; margin-bottom: 2rem; }
+        .video-wrap { position: relative; width: 100%; padding-bottom: 56.25%; margin-bottom: 2rem; }
+        .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 8px; }
+        .alert-success { background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 6px; margin-bottom: 1rem; }
+        .precios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+        .precio-card { background: #fff; border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.12); border-top: 4px solid var(--acento); }
+        .precio-card h4 { margin: 0 0 0.3rem; font-size: 1.1rem; }
+        .precio-categoria { color: #6b7280; font-size: 0.85rem; margin: 0 0 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+        .precio-monto { font-size: 1.8rem; font-weight: 700; color: var(--primario); margin: 0 0 1rem; }
+    </style>
+</head>
+<body>
+    <header class="site-header" th:fragment="header">
+        <h1>FitZone <span>Gym</span></h1>
+    </header>
+
+    <nav class="navbar" th:fragment="navbar">
+        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/categorias}">Categorias</a>
+        <a th:href="@{/clases}">Clases</a>
+        <a th:href="@{/reservas}">Reservas</a>
+        <a th:href="@{/contacto}">Contacto</a>
+    </nav>
+
+    <footer class="site-footer" th:fragment="footer">
+        <p>&copy; 2026 FitZone Gym - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
