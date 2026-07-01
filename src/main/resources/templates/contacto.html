@@ -6,10 +6,11 @@
     <nav th:replace="~{fragments/layout :: navbar}"></nav>
 
     <main class="container">
-        <h2>Contactanos</h2>
+        <h2>Quejas y Sugerencias</h2>
+        <p>¿Tienes una consulta, queja o sugerencia para el gimnasio? Escríbenos.</p>
 
         <div class="alert-success" th:if="${enviado}">
-            Gracias por escribirnos. Te contactaremos pronto.
+            Gracias por tu mensaje. Te contactaremos pronto.
         </div>
 
         <form th:action="@{/contacto/enviar}" th:object="${contacto}" method="post">
